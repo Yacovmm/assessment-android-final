@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "437852955829",
+    "firebase_url": "https://assessmentfundamentoandroid.firebaseio.com",
+    "project_id": "assessmentfundamentoandroid",
+    "storage_bucket": "assessmentfundamentoandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437852955829:android:77a74fb974a37d25",
+        "android_client_info": {
+          "package_name": "com.yacov.assessmentfundamentoandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437852955829-73baudkb6hq1am628ca5dbojkl35snsh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yacov.assessmentfundamentoandroid",
+            "certificate_hash": "42234df731d152c5b30fcf04558fe36c8a9fa31c"
+          }
+        },
+        {
+          "client_id": "437852955829-n7hleguesc9teoi0gflu5n5nd1gctu7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbbQfuK1Krt8s85tmI5Zm_9M4-fFm9pXA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437852955829-n7hleguesc9teoi0gflu5n5nd1gctu7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
