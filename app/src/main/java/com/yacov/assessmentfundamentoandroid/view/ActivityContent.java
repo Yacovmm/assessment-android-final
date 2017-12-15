@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.yacov.assessmentfundamentoandroid.api.Client;
 import com.yacov.assessmentfundamentoandroid.api.Service;
 import com.yacov.assessmentfundamentoandroid.model.Tarefa;
@@ -93,6 +94,15 @@ public class ActivityContent extends ListActivity {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
 
         }
+
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseAuth.getInstance().signOut();
 
     }
 }

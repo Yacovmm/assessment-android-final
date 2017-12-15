@@ -26,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText name, email, pass, passConfirm, cpf;
 
     private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
     private DatabaseReference ref;
 
     @Override
@@ -41,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
         cpf = (EditText) findViewById(R.id.regCpfID);
 
         mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference();
+
+        ref = FirebaseDatabase.getInstance().getReference("users");
 
 
     }
@@ -88,7 +87,13 @@ public class RegisterActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            registerUser();
+           registerUser();
+//            String nameString = name.getText().toString();
+//            String emalString = email.getText().toString();
+//            String senhaString = pass.getText().toString();
+//            String cpfString = cpf.getText().toString();
+//
+//            ref.push().setValue(new User(nameString, emalString, senhaString, cpfString));
             createFirebaseUser();
 
         }
@@ -133,10 +138,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         String nameString = name.getText().toString();
         String emalString = email.getText().toString();
-        String senhaString =pass.getText().toString();
+        String senhaString = pass.getText().toString();
         String cpfString = cpf.getText().toString();
 
-        ref.push().setValue(new User(nameString, emalString, senhaString, cpfString));
+        ref.child("users").push().setValue(new User(nameString, emalString, senhaString, cpfString));
 
     }
 

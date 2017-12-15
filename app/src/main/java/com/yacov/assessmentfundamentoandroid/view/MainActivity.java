@@ -18,6 +18,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private CallbackManager mCallBackManager;
-    private Button btnFacebook;
+    private LoginButton btnFacebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.emailLoginID);
         pass = (EditText) findViewById(R.id.passwordLoginID);
-        btnFacebook = (Button) findViewById(R.id.faceBtnID);
+        btnFacebook = (LoginButton) findViewById(R.id.faceBtnID);
 
-        FacebookSdk.setApplicationId("135398787133529");
-        FacebookSdk.sdkInitialize(getApplicationContext());
+//        FacebookSdk.setApplicationId("135398787133529");
+//        FacebookSdk.sdkInitialize(getApplicationContext());
 
         mAuth= FirebaseAuth.getInstance();
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mCallBackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+        btnFacebook.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 AuthCredential credential = FacebookAuthProvider
@@ -84,15 +85,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this,
-                        Arrays.asList("public_profile", "email"));
-            }
-        });
+//        btnFacebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this,
+//                        Arrays.asList("public_profile", "email"));
+//            }
+//        });
+
+        btnFacebook.setReadPermissions("email","public_profile");
 
     }
+
 
     private void signInCredential(AuthCredential credential)
     {
@@ -119,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         mCallBackManager.onActivityResult(requestCode, resultCode, data);
     }
 
